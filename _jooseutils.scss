@@ -1,0 +1,70 @@
+
+// ===
+// LAYOUT
+
+
+// Breakpoints
+@mixin bp($value, $prop : max-width) {
+  @media only screen and (#{$prop}: $value) {
+    @content;
+  }
+}
+
+
+// Position
+@mixin position($top: "null", $right: "null", $bottom: $top, $left: $right, $position: absolute, $zIndex: "null") {
+  position: $position;
+
+  @if $top != "null" { top: $top; }
+  @if $right != "null" { right: $right; }
+  @if $bottom != "null" { bottom: $bottom; }
+  @if $left != "null" { left: $left; }
+
+  @if $zIndex != "null" { z-index: $zIndex; }
+}
+
+
+// Dimensions
+@mixin dimensions($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+
+// ===
+// ANIMATION
+
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+// animation
+@mixin animation($name: fadeIn, $duration: 1s, $delay: .2s, $function: ease, $mode: both) {
+  @include experimental(animation, $name $duration $delay $function $mode);
+}
+
+
+
+// ===
+// TYPOGRAPHY
+
+
+// Caps
+@mixin caps($spaces: 1, $fontsize: 16) {
+  letter-spacing: ($spaces / $fontsize) + "em";
+  text-transform: uppercase;
+}
+
