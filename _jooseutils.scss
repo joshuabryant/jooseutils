@@ -92,7 +92,7 @@
 
 // Caps
 @mixin caps($spaces: 1, $fontsize: 16) {
-  letter-spacing: ($spaces / $fontsize) + "em";
+  letter-spacing: (1em * $spaces / $fontsize);
   text-transform: uppercase;
 }
 
