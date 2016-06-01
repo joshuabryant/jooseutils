@@ -90,6 +90,12 @@
 // TYPOGRAPHY
 
 
+// em's Calculator
+@function em($value, $base: 16) {
+  @return ($value / $base) * 1em;
+}
+
+
 // Caps
 @mixin caps($spaces: 1, $fontsize: 16) {
   letter-spacing: (1em * $spaces / $fontsize);
