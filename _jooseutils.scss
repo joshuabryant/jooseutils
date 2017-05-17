@@ -45,13 +45,23 @@
 }
 
 
+// Clearfix ("traditional" pseudo-element clear)
+@mixin cfafter {
+  &:after {
+    clear: both;
+    content: " ";
+    display: block;
+  }
+}
+
+
 
 
 // ===
 // ANIMATION
 
 
-// keyframes mixin
+// Keyframes mixin
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content; 
@@ -67,7 +77,8 @@
   } 
 }
 
-// animation
+
+// Animation
 @mixin animation($name: fadeIn, $duration: 1s, $delay: .2s, $function: ease, $mode: both) {
   @include experimental(animation, $name $duration $delay $function $mode);
 }
@@ -79,8 +90,27 @@
 // TYPOGRAPHY
 
 
+// em's Calculator
+@function em($value, $base: 16) {
+  @return ($value / $base) * 1em;
+}
+
+
 // Caps
 @mixin caps($spaces: 1, $fontsize: 16) {
-  letter-spacing: ($spaces / $fontsize) + "em";
+  letter-spacing: (1em * $spaces / $fontsize);
   text-transform: uppercase;
 }
+
+
+// Visually Hidden
+@mixin visuallyhidden() {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+
+
