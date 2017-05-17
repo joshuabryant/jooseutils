@@ -5,7 +5,6 @@
  */
 
 var gulp         = require('gulp'),
-    compass      = require('gulp-compass'),
     autoprefixer = require('gulp-autoprefixer'),
     notify       = require('gulp-notify'),
     uglify       = require('gulp-uglify'),
@@ -33,8 +32,7 @@ gulp.task('scripts', function (){
 // TASK: styles
 gulp.task('styles', function () {
     return gulp.src('sass/*.scss')
-        .pipe(compass({
-            config_file: './compass.rb',
+        .pipe(sass({
             css: 'css',
             sass: 'sass',
             output: 'compressed'
