@@ -18,7 +18,7 @@
 
 
 // Breakpoints
-@mixin bp($value, $prop : max-width) {
+@mixin bp($value, $prop : min-width) {
   @media only screen and (#{$prop}: $value) {
     @content;
   }
