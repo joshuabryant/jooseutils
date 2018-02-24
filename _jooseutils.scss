@@ -1,40 +1,32 @@
 
 // ===
-// USER INTERACTION
-
-
-// User Select
-@mixin user-select($value) {
-  -webkit-user-select: $value;
-  -moz-user-select: $value;
-  -ms-user-select: $value;
-}
-
-
-
-
-// ===
 // LAYOUT
 
-
-// Breakpoints
-@mixin bp($value, $prop : min-width) {
-  @media only screen and (#{$prop}: $value) {
-    @content;
-  }
-}
-
-
 // Position
-@mixin position($top: "null", $right: "null", $bottom: $top, $left: $right, $position: absolute, $zIndex: "null") {
+@mixin position(
+  $top: 'null',
+  $right: 'null',
+  $bottom: $top,
+  $left: $right,
+  $position: absolute,
+  $z-index: 'null'
+) {
   position: $position;
 
-  @if $top != "null" { top: $top; }
-  @if $right != "null" { right: $right; }
-  @if $bottom != "null" { bottom: $bottom; }
-  @if $left != "null" { left: $left; }
+  @if $top != 'null' {
+    top: $top;
+  }
+  @if $right != 'null' {
+    right: $right;
+  }
+  @if $bottom != 'null' {
+    bottom: $bottom;
+  }
+  @if $left != 'null' {
+    left: $left;
+  }
 
-  @if $zIndex != "null" { z-index: $zIndex; }
+  @if $z-index != 'null' { z-index: $z-index; }
 }
 
 
@@ -45,44 +37,14 @@
 }
 
 
-// Clearfix ("traditional" pseudo-element clear)
+// Clearfix ('traditional' pseudo-element clear)
 @mixin cfafter {
-  &:after {
+  &::after {
     clear: both;
-    content: " ";
+    content: ' ';
     display: block;
   }
 }
-
-
-
-
-// ===
-// ANIMATION
-
-
-// Keyframes mixin
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content; 
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  } 
-}
-
-
-// Animation
-@mixin animation($name: fadeIn, $duration: 1s, $delay: .2s, $function: ease, $mode: both) {
-  @include experimental(animation, $name $duration $delay $function $mode);
-}
-
 
 
 
@@ -104,13 +66,13 @@
 
 
 // Visually Hidden
-@mixin visuallyhidden() {
-  position: absolute;
-  overflow: hidden;
+@mixin visuallyhidden {
+  border: 0;
   clip: rect(0 0 0 0);
-  height: 1px; width: 1px;
-  margin: -1px; padding: 0; border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
-
-
-
