@@ -3,12 +3,14 @@
 // LAYOUT
 
 // Position
+$jutils-position-default: absolute;
+
 @mixin position(
   $top: 'null',
   $right: 'null',
   $bottom: $top,
   $left: $right,
-  $position: absolute,
+  $position: $jutils-position-default,
   $z-index: 'null'
 ) {
   position: $position;
@@ -25,8 +27,9 @@
   @if $left != 'null' {
     left: $left;
   }
-
-  @if $z-index != 'null' { z-index: $z-index; }
+  @if $z-index != 'null' {
+    z-index: $z-index;
+  }
 }
 
 
@@ -50,6 +53,29 @@
 
 // ===
 // TYPOGRAPHY
+
+// Highlight
+
+$jutils-highlight-color: #ff0;
+$jutils-highlight-top: .8em;
+$jutils-highlight-bottom: 1.1em;
+$jutils-highlight-opacity: .5;
+
+@mixin highlight(
+  $color: $jutils-highlight-color,
+  $top: $jutils-highlight-top,
+  $bottom: $jutils-highlight-bottom,
+  $opacity: $jutils-highlight-opacity
+) {
+  background-image: linear-gradient(to bottom,
+    rgba($color, 0) 0,
+    rgba($color, 0) $top,
+    rgba($color, $opacity) #{$top + .0001},
+    rgba($color, $opacity) #{$bottom - .0001},
+    rgba($color, 0) $bottom - .0001
+  );
+  display: inline;
+}
 
 
 // em's Calculator
