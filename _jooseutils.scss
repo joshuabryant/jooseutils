@@ -56,8 +56,8 @@ $jutils-position-default: absolute;
 
 // Highlight
 $jutils-highlight-color: #ff0;
-$jutils-highlight-top: .8em;
-$jutils-highlight-bottom: 1.1em;
+$jutils-highlight-top: 66.666%;
+$jutils-highlight-bottom: 95%;
 $jutils-highlight-opacity: .5;
 
 @mixin highlight(
@@ -66,7 +66,17 @@ $jutils-highlight-opacity: .5;
   $bottom: $jutils-highlight-bottom,
   $opacity: $jutils-highlight-opacity
 ) {
-  background-image: linear-gradient(to bottom,
+  @if ($color == 'null') {
+    $color: $jutils-highlight-color;
+  }
+  @if ($top == 'null') {
+    $top: $jutils-highlight-top;
+  }
+  @if ($bottom == 'null') {
+    $bottom: $jutils-highlight-bottom;
+  }
+
+  background-image: linear-gradient(180deg,
     rgba($color, 0) 0,
     rgba($color, 0) $top,
     rgba($color, $opacity) #{$top + .0001},
