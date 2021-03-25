@@ -87,14 +87,39 @@ $jutils-highlight-opacity: .5;
 }
 
 
+$joose-base-font-size: 16;
+
 // em's Calculator
-@function em($value, $base: 16) {
+@function em($value, $base: $joose-base-font-size) {
   @return ($value / $base) * 1em;
+}
+
+// rem's Calculator
+@function rem($value, $base: $joose-base-font-size) {
+  @return ($value / $base) * 1rem;
+}
+
+
+// Font Shorthand
+@mixin font($size, $line: 'null', $letter: 'null', $family: 'null') {
+  font-size: 1rem * $size / $joose-base-font-size;
+
+  @if $line != 'null' {
+    line-height: ($line / $size);
+  }
+
+  @if $letter != 'null' {
+    letter-spacing: ($letter / $size * 1em);
+  }
+
+  @if $family != 'null' {
+    font-family: $family;
+  }
 }
 
 
 // Caps
-@mixin caps($spaces: 1, $fontsize: 16) {
+@mixin caps($spaces: 1, $fontsize: $joose-base-font-size) {
   letter-spacing: (1em * $spaces / $fontsize);
   text-transform: uppercase;
 }
@@ -110,4 +135,12 @@ $jutils-highlight-opacity: .5;
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+@mixin sronly() {
+  @include visuallyhidden;
+}
+
+@mixin sr-only() {
+  @include sronly; 
 }
