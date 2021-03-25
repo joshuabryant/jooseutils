@@ -87,22 +87,22 @@ $jutils-highlight-opacity: .5;
 }
 
 
-$joose-base-font-size: 16;
+$jutils-font-size-base: 16;
 
 // em's Calculator
-@function em($value, $base: $joose-base-font-size) {
+@function em($value, $base: $jutils-font-size-base) {
   @return ($value / $base) * 1em;
 }
 
 // rem's Calculator
-@function rem($value, $base: $joose-base-font-size) {
+@function rem($value, $base: $jutils-font-size-base) {
   @return ($value / $base) * 1rem;
 }
 
 
 // Font Shorthand
 @mixin font($size, $line: 'null', $letter: 'null', $family: 'null') {
-  font-size: 1rem * $size / $joose-base-font-size;
+  font-size: 1rem * $size / $jutils-font-size-base;
 
   @if $line != 'null' {
     line-height: ($line / $size);
@@ -119,7 +119,7 @@ $joose-base-font-size: 16;
 
 
 // Caps
-@mixin caps($spaces: 1, $fontsize: $joose-base-font-size) {
+@mixin caps($spaces: 1, $fontsize: $jutils-font-size-base) {
   letter-spacing: (1em * $spaces / $fontsize);
   text-transform: uppercase;
 }
