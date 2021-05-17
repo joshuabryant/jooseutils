@@ -1,6 +1,6 @@
 
 // ===
-// LAYOUT
+// LAYOUT and MEASURES
 
 // Position
 $jutils-position-default: absolute;
@@ -47,6 +47,20 @@ $jutils-position-default: absolute;
     content: ' ';
     display: block;
   }
+}
+
+
+// Min, Max and Clamp
+@function css-min($a, $b) {
+  @return m#{i}n($a, $b);
+}
+
+@function css-max($a, $b) {
+  @return m#{a}x($a, $b);
+}
+
+@function css-clamp($a, $b, $c) {
+  @return cl#{a}mp($a, $b, $c);
 }
 
 
