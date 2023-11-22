@@ -6,30 +6,19 @@
 $jutils-position-default: absolute;
 
 @mixin position(
-  $top: 'null',
-  $right: 'null',
+  $top: null,
+  $right: null,
   $bottom: $top,
   $left: $right,
   $position: $jutils-position-default,
-  $z-index: 'null'
+  $z-index: null
 ) {
   position: $position;
-
-  @if $top != 'null' {
-    top: $top;
-  }
-  @if $right != 'null' {
-    right: $right;
-  }
-  @if $bottom != 'null' {
-    bottom: $bottom;
-  }
-  @if $left != 'null' {
-    left: $left;
-  }
-  @if $z-index != 'null' {
-    z-index: $z-index;
-  }
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
 }
 
 
@@ -80,13 +69,13 @@ $jutils-highlight-opacity: .5;
   $bottom: $jutils-highlight-bottom,
   $opacity: $jutils-highlight-opacity
 ) {
-  @if ($color == 'null') {
+  @if not $color {
     $color: $jutils-highlight-color;
   }
-  @if ($top == 'null') {
+  @if not $top {
     $top: $jutils-highlight-top;
   }
-  @if ($bottom == 'null') {
+  @if not $bottom {
     $bottom: $jutils-highlight-bottom;
   }
 
@@ -115,26 +104,20 @@ $jutils-font-size-base: 16;
 
 
 // Font Shorthand
-@mixin font($size, $line: 'null', $letter: 'null', $family: 'null') {
-  font-size: 1rem * $size / $jutils-font-size-base;
-
-  @if $line != 'null' {
-    line-height: ($line / $size);
+@mixin font($size, $line: null, $letter: null) {
+  font-size: math.div(1rem * $size, $jutils-font-size-base);
+  @if $line {
+    line-height: math.div($line, $size);
   }
-
-  @if $letter != 'null' {
-    letter-spacing: ($letter / $size * 1em);
-  }
-
-  @if $family != 'null' {
-    font-family: $family;
+  @if $letter {
+    letter-spacing: math.div($letter * 1em, $size);
   }
 }
 
 
 // Caps
 @mixin caps($spaces: 1, $fontsize: $jutils-font-size-base) {
-  letter-spacing: (1em * $spaces / $fontsize);
+  letter-spacing: math.div(1em * $spaces, $fontsize);
   text-transform: uppercase;
 }
 
@@ -151,10 +134,10 @@ $jutils-font-size-base: 16;
   width: 1px;
 }
 
-@mixin sronly() {
+@mixin sronly {
   @include visuallyhidden;
 }
 
-@mixin sr-only() {
+@mixin sr-only {
   @include sronly; 
 }
